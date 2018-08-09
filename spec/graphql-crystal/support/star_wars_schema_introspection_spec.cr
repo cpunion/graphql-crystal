@@ -65,16 +65,18 @@ describe GraphQL::Schema::Schema do
           ],
         },
       },
-    }["data"].as(Hash)["__schema"].as(Hash)["types"].as(Array)
+    }["data"]["__schema"]["types"]
 
-    result = StarWars::Schema.execute(query_string)["data"].as(Hash)["__schema"].as(Hash)["types"].as(Array)
-    missing = expected.reject { |element| result.includes? element }
-    superfluous = result.reject { |element| expected.includes? element }
+    r = StarWars::Schema.execute(query_string)
+    p r
+    # result = StarWars::Schema.execute(query_string)["data"]["__schema"]["types"]
+    # missing = expected.reject { |element| result.includes? element }
+    # superfluous = result.reject { |element| expected.includes? element }
 
-    empty = [] of Hash(String, String)
-    missing.should eq empty
-    pending "it should only return scalar types actually used in the schema" do
-      superfluous.should eq empty
-    end
+    # empty = [] of Hash(String, String)
+    # missing.should eq empty
+    # pending "it should only return scalar types actually used in the schema" do
+    #   superfluous.should eq empty
+    # end
   end
 end
