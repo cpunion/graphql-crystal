@@ -6,7 +6,7 @@ authors:
 
 dependencies:
   cltk:
-    github: ziprandom/cltk
+    github: cpunion/cltk
     branch: master
 
 crystal: 0.25.0
